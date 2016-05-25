@@ -3,12 +3,12 @@
 
     angular
         .module('AppModule')
-        .controller('AddController', addController);
+        .controller('AddController', ['stock',addController]);
 
-    // Controller.$inject = [];
+    // addController.$inject = ['stock'];
 
     /* @ngInject */
-    function addController() {
+    function addController(stock) {
         var vm = this;
         vm.mobile = {};
         vm.mobile.Brand = 'Sony';
@@ -22,18 +22,7 @@
           {'name':"LG"}
         ];
         vm.addMobile = function() {
-          var stock = localStorage.getItem('stock');
-          if (stock) {
-            stock = JSON.parse(stock);
-            stock.push(vm.mobile);
-            stock = JSON.stringify(stock);
-            localStorage.setItem('stock', stock);
-          } else {
-            stock = [];
-            stock.push(vm.mobile);
-            stock = JSON.stringify(stock);
-            localStorage.setItem('stock', stock);
-          }
+          stock.save(vm.mobile);
         }
     }
 })();
