@@ -23,6 +23,7 @@
         ];
         vm.addMobile = function() {
           stock.save(vm.mobile);
+          window.location = '../main/main.html'
         }
     }
 })();
