@@ -3,9 +3,9 @@
 
     angular
         .module('AppModule')
-        .controller('AddController', ['stock',addController]);
+        .controller('AddController', addController);
 
-    // addController.$inject = ['stock'];
+    addController.$inject = ['stock'];
 
     /* @ngInject */
     function addController(stock) {

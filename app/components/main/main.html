@@ -53,7 +53,7 @@
             </div>
             <div class="container" ng-show="mainCtrl.info">
               <h3><ul>
-                <li ng-repeat="(key, option) in mainCtrl.info" ng-if="!$first" >{{key}} : {{ option }}</li>
+                <li ng-repeat="(key, option) in mainCtrl.info" ng-if="key!='id'" >{{key}} : {{ option }}</li>
               </ul></h3>
             </div>
         </div>
@@ -61,5 +61,6 @@
         <script type="text/javascript" src='../../assets/lib/angular.js'></script>
         <script type="text/javascript" src='../../app.module.js'></script>
         <script type="text/javascript" src='main.controller.js'></script>
+        <script type="text/javascript" src='../../services/localstorage.service.js'></script>
     </body>
 </html>

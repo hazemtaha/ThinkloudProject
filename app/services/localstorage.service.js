@@ -14,18 +14,20 @@
               var stock = localStorage.getItem('stock');
               if (stock) {
                 stock = JSON.parse(stock);
-                stock.push(mobile);
+                var index = stock.push(mobile);
+                stock[index-1].id = index-1;
                 stock = JSON.stringify(stock);
                 localStorage.setItem('stock', stock);
               } else {
                 stock = [];
-                stock.push(mobile);
+                var index = stock.push(mobile);
+                stock[index-1].id = index-1;
                 stock = JSON.stringify(stock);
                 localStorage.setItem('stock', stock);
               }
             },
             get: function() {
-              return localStorage.getItem('stock');
+              return JSON.parse(localStorage.getItem('stock'));
             }
         };
         return service;

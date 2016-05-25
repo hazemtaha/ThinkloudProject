@@ -5,11 +5,12 @@
         .module('AppModule')
         .controller('MainController', mainController);
 
-    // Controller.$inject = [];
+    mainController.$inject = ['stock'];
 
     /* @ngInject */
-    function mainController() {
+    function mainController(stock) {
         var vm = this;
+        console.log(vm.info);
         vm.brand = 'Sony';
         vm.brands = [
           {'name': "Sony"},
@@ -18,21 +19,14 @@
           {'name':"Nokia"},
           {'name':"LG"}
         ];
-      var stock = [
-        {'id': 1,'Brand': 'Sony','Model': "C3", 'Year': "2015",'Memory': '16G',
-         'Dual Sim': true,'NFC': true , 'Color': 'White'},
-        {'id': 2,'Brand': 'Apple','Model': "IPhone 6", 'Year': "2016",'Memory': '32G', 'Dual Sim': true,'4G': true , 'Color': 'Black'},
-        {'id': 4,'Brand': 'Apple','Model': "IPhone 6", 'Year': "2016",'Memory': '32G', 'Dual Sim': true,'4G': true , 'Color': 'Black'},
-        {'id': 3,'Brand': 'Nokia','Model': "3310", 'Year': "1992",'Memory': '64G','Dual Sim': true,'NFC': true , 'Color': 'Blue'},
-      ];
-      vm.stock = stock;
+      vm.stock = stock.get();
       vm.showDetails = function(mobileObj) {
         vm.info = mobileObj
       }
       vm.searchMobiles = function() {
         vm.results = [];
         vm.info = ''
-        angular.forEach(stock,function(mobile) {
+        angular.forEach(stock.get(),function(mobile) {
           console.log(mobile.Model == vm.model && mobile.Brand == vm.brand);
           if (mobile.Model == vm.model && mobile.Brand == vm.brand) {
             vm.results.push(mobile);
