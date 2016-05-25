@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Home</title>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+        <link rel="stylesheet" href="../../assets/css/main.css" media="screen" title="no title" charset="utf-8">
+    </head>
+    <body ng-app="AppModule">
+        <div class="container" ng-controller="MainController as mainCtrl">
+            <div class="row">
+                <h1 class="col-sm-8">Mobile Shop Application</h1>
+                <a href="../add/add.html" class="btn btn-primary top-magrin">Add New Mobile</a>
+            </div>
+            <br><br>
+            <div class="form-horizontal row">
+                <div class="col-sm-6">
+                    <div class="form-group">
+                        <label for="model" class="col-sm-2 control-label">Model</label>
+                        <div class="col-sm-6">
+                            <input type="text" name="model" class="form-control" ng-model="mainCtrl.model" value="">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="brand" class="col-sm-2 control-label">Brand</label>
+                        <div class="col-sm-6">
+                            <select class="form-control" name="brand" ng-model="mainCtrl.brand">
+                                <option ng-repeat="brand in mainCtrl.brands" value="{{ brand.name }}">{{ brand.name }}</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                  <button type="button" name="search" class="btn btn-primary" ng-click="mainCtrl.searchMobiles()"> Search </button>
+                </div>
+            </div>
+            <br><br>
+            <div class="container">
+              <table class="table table-hover table-responsive">
+                <tr class="bg-success">
+                  <th>Brand<th>
+                  <th>Model<th>
+                  <th>Year<th>
+                </tr>
+                <tr ng-repeat="mobile in mainCtrl.stock" ng-click="mainCtrl.showDetails(mobile)" ng-class="{ 'bg-warning': mainCtrl.info.id == mobile.id }">
+                  <td>{{ mobile.Brand }}<td>
+                  <td>{{ mobile.Model }}<td>
+                  <td>{{ mobile.Year }}<td>
+                </tr>
+              </table>
+            </div>
+            <div class="container" ng-show="mainCtrl.info">
+              <h3><ul>
+                <li ng-repeat="(key, option) in mainCtrl.info" ng-if="!$first" >{{key}} : {{ option }}</li>
+              </ul></h3>
+            </div>
+        </div>
+
+        <script type="text/javascript" src='../../assets/lib/angular.js'></script>
+        <script type="text/javascript" src='../../app.module.js'></script>
+        <script type="text/javascript" src='main.controller.js'></script>
+    </body>
+</html>
