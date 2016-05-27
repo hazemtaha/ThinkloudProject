@@ -9,14 +9,14 @@
         <link rel="stylesheet" href="../../assets/css/main.css" media="screen" title="no title" charset="utf-8">
     </head>
     <body ng-app="AppModule">
-        <div class="container" ng-controller="MainController as mainCtrl">
+        <div class="container-fluid" ng-controller="MainController as mainCtrl">
             <div class="row">
-                <h1 class="col-sm-8">Mobile Shop Application</h1>
+                <h1 class="col-sm-5">Mobile Shop Application</h1>
                 <a href="../add/add.html" class="btn btn-primary top-magrin">Add New Mobile</a>
             </div>
             <br><br>
             <div class="form-horizontal row">
-                <div class="col-sm-6">
+                <div class="col-sm-4">
                     <div class="form-group">
                         <label for="model" class="col-sm-2 control-label">Model</label>
                         <div class="col-sm-6">
@@ -37,7 +37,11 @@
                 </div>
             </div>
             <br><br>
-            <div class="container">
+
+            <!--  data table -->
+            <div class="col-sm-6">
+
+            <div class="container-fluid">
               <table class="table table-hover table-responsive">
                 <tr class="bg-success">
                   <th>Brand<th>
@@ -56,11 +60,24 @@
                 <li ng-repeat="(key, option) in mainCtrl.info" ng-if="key!='id'" >{{key}} : {{ option }}</li>
               </ul></h3>
             </div>
-        </div>
+          </div>
+          <div class="col-sm-5">
+            <!-- <bars data="40,4,55,15,16,33,52,20"></bars> -->
+            <h4> - Manufacture Years VS Mobile Count</h4>
+            <bar-chart></bar-chart>
+            <h4> - Brand VS Mobile Count </h4>
+            <donut-chart></donut-chart>
 
+            <!-- <svg class="chart"> </svg> -->
+          </div>
+        </div>
         <script type="text/javascript" src='../../assets/lib/angular.js'></script>
+        <script type="text/javascript" src='../../assets/lib/d3.js' charset="utf-8"></script>
         <script type="text/javascript" src='../../app.module.js'></script>
         <script type="text/javascript" src='main.controller.js'></script>
         <script type="text/javascript" src='../../services/localstorage.service.js'></script>
+        <script type="text/javascript" src='../../services/stock_data.service.js'></script>
+        <script type="text/javascript" src='barchart.directive.js'></script>
+        <script type="text/javascript" src='donutchart.directive.js'></script>
     </body>
 </html>

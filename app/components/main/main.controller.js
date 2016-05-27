@@ -4,13 +4,11 @@
     angular
         .module('AppModule')
         .controller('MainController', mainController);
-
     mainController.$inject = ['stock'];
 
     /* @ngInject */
     function mainController(stock) {
         var vm = this;
-        console.log(vm.info);
         vm.brand = 'Sony';
         vm.brands = [
           {'name': "Sony"},
