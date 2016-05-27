@@ -25,8 +25,9 @@
         vm.results = [];
         vm.info = ''
         angular.forEach(stock.get(),function(mobile) {
-          console.log(mobile.Model == vm.model && mobile.Brand == vm.brand);
-          if (mobile.Model == vm.model && mobile.Brand == vm.brand) {
+          console.log(vm.model);
+          // console.log(mobile.Model == vm.model || true && mobile.Brand == vm.brand );
+          if ((mobile.Model == vm.model || vm.model == undefined) && mobile.Brand == vm.brand) {
             vm.results.push(mobile);
           }
         });
